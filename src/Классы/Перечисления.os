@@ -44,7 +44,7 @@
 	ОписанияТиповРасширений.Вставить("zip","application/x-compressed");
 	ОписанияТиповРасширений.Вставить("rar","application/x-compressed");
 	ОписанияТиповРасширений.Вставить("json","application/json");
-	ОписанияТиповРасширений.Вставить("default","text/plain; charset=utf-8");
+	ОписанияТиповРасширений.Вставить("txt","text/plain; charset=utf-8");
 
 	Возврат ОписанияТиповРасширений;
 
