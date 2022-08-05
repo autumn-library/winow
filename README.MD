@@ -761,3 +761,5 @@ hwapp/view/printarray.html
 {% КонецЦикла; %}
 </div>
 ```
+
+![hw12](docs/hw12.png)
