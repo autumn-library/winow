@@ -1,0 +1,12 @@
+<form method="post" enctype="multipart/form-data" action="/upload/postfile">
+    <div>
+      <label for="{{ Модель.ИдентификаторФайла }}"> {{ Модель.Заголовок }} </label>
+      <input type="file" id="{{ Модель.ИдентификаторФайла }}" name="{{ Модель.ИдентификаторФайла }}"
+            {% Если Модель.Свойство("Типы") и ЗначениеЗаполнено(Модель.Типы) Тогда 
+            %}accept="{{ Модель.Типы }}">{% 
+            КонецЕсли; %}
+    </div>    
+    <div>
+      <button>Submit</button>
+    </div>
+</form>
