@@ -6,6 +6,6 @@
         "ПриветМир": "./example/hwapp"
     },
     "КаталогиСФайлами": {
-        "/images": "./example/hwapp/files"
+      //  "/images": "./example/hwapp/files"
     }
 }
