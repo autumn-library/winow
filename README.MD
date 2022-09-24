@@ -843,7 +843,7 @@ app/view/printarray.html
 А вот так выглядит общий шаблон
 
 ```html
-!doctype html>
+<!doctype html>
 <html>
 <head>
 <title>{{Модель.Заголовок}}</title>
