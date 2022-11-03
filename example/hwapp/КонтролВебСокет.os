@@ -17,7 +17,8 @@
 Процедура ОбработкаСокета(Запрос, Ответ) Экспорт
 	Если не Запрос.Заголовки["Sec-WebSocket-Key"] = Неопределено Тогда
 
-		ПростоХеш = ГенерацияХешаОтвета("dGhlIHNhbXBsZSBub25jZQ==");
+		ПростоХеш = ГенерацияХешаОтвета("hFDf0q+qrE3XrVg3YgqfJA=="); 
+		а = ПростоХеш = "uo/E2pDBlagwgbfkbn8rDMNjaks=";
 		
 		ЗаголовокОтвета = ГенерацияХешаОтвета(Запрос.Заголовки["Sec-WebSocket-Key"]);
 		
@@ -27,7 +28,7 @@
 		Ответ.Заголовки.Вставить("Upgrade", "websocket");
 		Ответ.Заголовки.Вставить("Connection", "Upgrade");
 		Ответ.Заголовки.Вставить("Sec-WebSocket-Accept", ЗаголовокОтвета);
-		Ответ.Заголовки.Вставить("Sec-WebSocket-Extensions", "permessage-deflate");
+		//Ответ.Заголовки.Вставить("Sec-WebSocket-Extensions", "permessage-deflate");
 		Ответ.СостояниеКод = "101";
 		Ответ.СостояниеТекст = "Switching Protocols";
 
