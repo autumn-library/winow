@@ -12,7 +12,7 @@ opm install winow
 
 ## Книга жалоб и пожеланий !
 
-Можно оставить тут https://github.com/Nivanchenko/winow/issues или тут https://github.com/oscript-library/winow/issues
+Можно оставить тут https://github.com/autumn-library/winow/issues или тут https://github.com/oscript-library/winow/issues
 
 ## Что можно сделать ?
 
