@@ -980,4 +980,8 @@ app/КонтролСУправлениемДоступом.os
 
 В вот небольшой пример, как это можно сделать.
 
-Нужно в один каталог положить непосредственно приложение [app](docker/app/), [Dockerfile](docker/app/Dockerfile), Скрипт запуска сервера [docker-entrypoint.sh](docker/app/docker-entrypoint.sh), ну и все это дело удобно собирать одним скриптом [start.sh](docker/app/start.sh)
+Нужно в один каталог положить 
+* Само приложение [app](docker/app/), которое содержит скрипт запуска, контролы, файлы и картинки, ``autumn-properties.json``` со всеми настройками и т.д.
+* [Dockerfile](docker/app/Dockerfile) для того, что бы собрать образ, и прокинуть в него все файлы. 
+* Скрипт запуска сервера [docker-entrypoint.sh](docker/app/docker-entrypoint.sh).
+* И все это дело удобно собирать одним скриптом [start.sh](docker/app/start.sh).
