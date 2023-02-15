@@ -2,3 +2,5 @@
 .DS_Store
 example/hwapp/upload
 *.ospx
+out/
+oscript_modules/
