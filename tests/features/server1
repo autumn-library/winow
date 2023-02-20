@@ -1,0 +1,19 @@
+GET /socket/ws HTTP/1.1
+Host: localhost:3333
+User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/109.0
+Accept: */*
+Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+Accept-Encoding: gzip, deflate, br
+Sec-WebSocket-Version: 13
+Origin: null
+Sec-WebSocket-Extensions: permessage-deflate
+Sec-WebSocket-Key: Ve8z7rYjrE2GVl872O1ZEg==
+DNT: 1
+Connection: keep-alive, Upgrade
+Sec-Fetch-Dest: websocket
+Sec-Fetch-Mode: websocket
+Sec-Fetch-Site: cross-site
+Pragma: no-cache
+Cache-Control: no-cache
+Upgrade: websocket
+
