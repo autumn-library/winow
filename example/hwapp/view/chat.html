@@ -43,6 +43,9 @@ window.onload = function () {
                 appendLog(item);
             }
         };
+        conn.onerror = function(ErrorEvent) {
+                console.log(`[error] ${ErrorEvent.data}`);
+            };
     } else {
         var item = document.createElement("div");
         item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
