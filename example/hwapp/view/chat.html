@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height" />
 <title>Chat Example</title>
 <style type="text/css">
 
@@ -13,7 +14,6 @@
     body {
       background: #C5DDEB;
       font: 14px/20px "Lato", Arial, sans-serif;
-      padding: 40px 0;
       color: white;
     }
     
@@ -22,47 +22,6 @@
       width: 85%;
       background: #444753;
       border-radius: 5px;
-    }
-    
-    .people-list {
-      width: 260px;
-      float: left;
-    }
-    .people-list .search {
-      padding: 20px;
-    }
-    .people-list input {
-      border-radius: 3px;
-      border: none;
-      padding: 14px;
-      color: white;
-      background: #6A6C75;
-      width: 90%;
-      font-size: 14px;
-    }
-    .people-list .fa-search {
-      position: relative;
-      left: -25px;
-    }
-    .people-list ul {
-      padding: 20px;
-      height: 770px;
-    }
-    .people-list ul li {
-      padding-bottom: 20px;
-    }
-    .people-list img {
-      float: left;
-    }
-    .people-list .about {
-      float: left;
-      margin-top: 8px;
-    }
-    .people-list .about {
-      padding-left: 8px;
-    }
-    .people-list .status {
-      color: #92959E;
     }
     
     .chat {
@@ -102,7 +61,7 @@
       padding: 30px 30px 20px;
       border-bottom: 2px solid white;
       overflow-y: scroll;
-      height: 575px;
+      height: 85vh;
     }
     .chat .chat-history .message-data {
       margin-bottom: 15px;
@@ -123,7 +82,7 @@
     }
     .chat .chat-history .message:after {
       bottom: 100%;
-      left: 7%;
+      left: 10%;
       border: solid transparent;
       content: " ";
       height: 0;
@@ -142,17 +101,17 @@
     }
     .chat .chat-history .other-message:after {
       border-bottom-color: #94C2ED;
-      left: 93%;
+      left: 91%;
     }
     .chat .chat-message {
-      padding: 30px;
+      padding: 10px;
     }
     .chat .chat-message textarea {
-      width: 100%;
+      width: 80%;
       border: none;
-      padding: 10px 20px;
+      padding: 1px 20px;
       font: 14px/22px "Lato", Arial, sans-serif;
-      margin-bottom: 10px;
+      margin-bottom: 1px;
       border-radius: 5px;
       resize: none;
     }
@@ -170,6 +129,7 @@
       cursor: pointer;
       font-weight: bold;
       background: #F2F5F8;
+      margin-top: 10px;
     }
     .chat .chat-message button:hover {
       color: #75b1e8;
@@ -217,56 +177,19 @@
 </style>
 </head>
 <body>
-<!--
-<div id="log" class="chat"></div>
-
-<form id="form1">
-    <input type="text" id="msg1" size="64" autofocus />
-    <input type="submit" value="Send" />
-</form>
--->
 
 <div class="container clearfix" id="container">
         
-    <div class="chat" id="chat">
-      <div class="chat-header clearfix">
-    
-        <div class="chat-about">
-          <div class="chat-with">Добро пожаловать в прекрасный чат</div>
-          <div class="chat-num-messages">Тут вам будет весело</div>
-        </div>
-        <i class="fa fa-star"></i>
-      </div> <!-- end chat-header -->
-      
-      <div class="chat-history">
+    <div class="chat">
+       
+      <div class="chat-history" id="chat">
         <ul id="chatlist" style="list-style: none;">
-          <li class="clearfix">
-            <div class="message-data align-right">
-              <span class="message-data-time" >10:10 AM, Today</span> &nbsp; &nbsp;
-              <span class="message-data-name" >Olia</span> <i class="fa fa-circle me"></i>
-              
-            </div>
-            <div class="message other-message float-right">
-              Hi Vincent, how are you? How is the project coming along?
-            </div>
-          </li>
-          
-          <li class="clearfix">
-            <div class="message-data">
-              <span class="message-data-name"><i class="fa fa-circle online"></i> Vincent</span>
-              <span class="message-data-time">10:12 AM, Today</span>
-            </div>
-            <div class="message my-message">
-              Are we meeting today? Project has been already finished and I have results to show you.
-            </div>
-          </li>
-                    
+        <!-- тут будет генерация чата. -->       
         </ul>
-        
       </div> <!-- end chat-history -->
       
       <div class="chat-message clearfix">
-        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="3"></textarea>
+        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="1"></textarea>
                        
         <button id="sendButton">Send</button>
 
@@ -279,41 +202,10 @@
 </body>
 <script type="text/javascript">
 
-    function addMessage(_messageText, _Time, _Author, _MessageIsRCV) {
-       var chatlog = document.getElementById('chatlist');
-
-        const messageText = _messageText;
-        const Time = _Time;
-        const Author = _Author;
-        var MessageType = '';
-        var nameAlign = '';
-        if (_MessageIsRCV == true) {
-            MessageType = "other-message float-right";
-            nameAlign = " align-right";
-        }
-        else {
-            MessageType = "my-message";
-        }
-   
-        content =   `<div class="message-data${nameAlign}">
-                        <span class="message-data-time" >${Time}</span> &nbsp; &nbsp;
-                        <span class="message-data-name" >${Author}</span> <i class="fa fa-circle me"></i>
-                    </div>
-                    <div class="message ${MessageType}">${messageText}</div>`;
-        
-        var item = document.createElement("li");
-        item.className = "clearfix";
-        item.innerHTML = content;
-        chatlog.append(item);   
-    }
-
-    addMessage("hello", "now", "oracul", true);
-
-    window.onload = function () {
     var conn;
     var msg = document.getElementById("message-to-send");
-   
-    document.getElementById("sendButton").onclick = function () {
+
+    function sendMessage() {
         if (!conn) {
             return false;
         }
@@ -325,27 +217,78 @@
         return false;
     };
 
+    function getContentMyMessage(Time, Author, messageText){
+        return  `<div class="message-data align-right">
+                        <span class="message-data-name" >${Author}</span> <i class="fa fa-circle me"></i>
+                        <span class="message-data-time" >${Time}</span> &nbsp; &nbsp;
+                    </div>
+                    <div class="message other-message float-right">${messageText}</div>`;
+    }
+
+    function getContentOtherMessage(Time, Author, messageText){
+        return  `<div class="message-data">
+                        <span class="message-data-time" >${Time}</span> &nbsp; &nbsp;
+                        <span class="message-data-name" >${Author}</span> <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="message my-message">${messageText}</div>`;
+    }
+
+    function addMessage(_messageText, _Time, _Author, _MessageIsRCV) {
+       var chatlog = document.getElementById('chatlist');
+       var chat = document.getElementById('chat');
+
+        
+        if (_MessageIsRCV == true) {
+            content = getContentOtherMessage(_Time, _Author, _messageText);  
+        }
+        else {
+            content = getContentMyMessage(_Time, _Author, _messageText); 
+        }
+        
+        var item = document.createElement("li");
+        item.className = "clearfix";
+        item.innerHTML = content;
+        chatlog.append(item);  
+        chat.scroll({ top: chat.scrollHeight, behavior: 'smooth' });
+    }
+
+    window.onload = function () {
+   
+    document.getElementById("sendButton").onclick = function () {
+        return sendMessage();
+    };
+
+    msg.onkeypress = function () {
+        var key = window.event.keyCode;
+
+        // If the user has pressed enter
+        if (key === 13) {
+            sendMessage();
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+
     if (window["WebSocket"]) {
         conn = new WebSocket("ws://" + document.location.host + "/chat/message");
-        // conn.onclose = function (evt) {
-        //     var item = document.createElement("div");
-        //     item.innerHTML = "<b>Connection closed.</b>";
-        //     appendLog(item);
-        // };
+        conn.onclose = function (evt) {
+            addMessage("Connection closed", "now", "Error", true);
+        };
         conn.onmessage = function (evt) {
             var message = JSON.parse(evt.data);
-            addMessage(message.Text, message.Time, message.Author, message.rcv)
-            
+            addMessage(message.Text, message.Time, message.Author, message.rcv);  
         };
         conn.onerror = function(ErrorEvent) {
-                console.log(`[error] ${ErrorEvent.data}`);
-            };
+            addMessage(ErrorEvent.data, "now", "Error", true);
+        };
     } else {
-        // var item = document.createElement("div");
-        // item.innerHTML = "<b>Your browser does not support WebSockets.</b>";
-        // appendLog(item);
+        addMessage("Your browser does not support WebSockets.", "now", "Error", true);
     }
 };
+
+addMessage("Wellcome", "now", "Client", true);
 
 </script>
 </html>
