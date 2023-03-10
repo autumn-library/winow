@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height" />
+<title>Chat Example</title>
+<style type="text/css">
+
+
+    @import url(https://fonts.googleapis.com/css?family=Lato:400,700);
+    *, *:before, *:after {
+      box-sizing: border-box;
+    }
+    
+    body {
+      background: #C5DDEB;
+      font: 14px/20px "Lato", Arial, sans-serif;
+      color: white;
+    }
+    
+    .container {
+      margin: 0 auto;
+      width: 85%;
+      background: #444753;
+      border-radius: 5px;
+    }
+    
+    .chat {
+      width: 100%;
+      float: left;
+      background: #F2F5F8;
+      border-top-right-radius: 5px;
+      border-bottom-right-radius: 5px;
+      color: #434651;
+    }
+    .chat .chat-header {
+      padding: 20px;
+      border-bottom: 2px solid white;
+    }
+    .chat .chat-header img {
+      float: left;
+    }
+    .chat .chat-header .chat-about {
+      float: left;
+      padding-left: 10px;
+      margin-top: 6px;
+    }
+    .chat .chat-header .chat-with {
+      font-weight: bold;
+      font-size: 16px;
+    }
+    .chat .chat-header .chat-num-messages {
+      color: #92959E;
+    }
+    .chat .chat-header .fa-star {
+      float: right;
+      color: #D8DADF;
+      font-size: 20px;
+      margin-top: 12px;
+    }
+    .chat .chat-history {
+      padding: 30px 30px 20px;
+      border-bottom: 2px solid white;
+      overflow-y: scroll;
+      height: 85vh;
+    }
+    .chat .chat-history .message-data {
+      margin-bottom: 15px;
+    }
+    .chat .chat-history .message-data-time {
+      color: #a8aab1;
+      padding-left: 6px;
+    }
+    .chat .chat-history .message {
+      color: white;
+      padding: 18px 20px;
+      line-height: 26px;
+      font-size: 16px;
+      border-radius: 7px;
+      margin-bottom: 30px;
+      width: 90%;
+      position: relative;
+    }
+    .chat .chat-history .message:after {
+      bottom: 100%;
+      left: 10%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-bottom-color: #86BB71;
+      border-width: 10px;
+      margin-left: -10px;
+    }
+    .chat .chat-history .my-message {
+      background: #86BB71;
+    }
+    .chat .chat-history .other-message {
+      background: #94C2ED;
+    }
+    .chat .chat-history .other-message:after {
+      border-bottom-color: #94C2ED;
+      left: 91%;
+    }
+    .chat .chat-message {
+      padding: 10px;
+    }
+    .chat .chat-message textarea {
+      width: 80%;
+      border: none;
+      padding: 1px 20px;
+      font: 14px/22px "Lato", Arial, sans-serif;
+      margin-bottom: 1px;
+      border-radius: 5px;
+      resize: none;
+    }
+    .chat .chat-message .fa-file-o, .chat .chat-message .fa-file-image-o {
+      font-size: 16px;
+      color: gray;
+      cursor: pointer;
+    }
+    .chat .chat-message button {
+      float: right;
+      color: #94C2ED;
+      font-size: 16px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+      background: #F2F5F8;
+      margin-top: 10px;
+    }
+    .chat .chat-message button:hover {
+      color: #75b1e8;
+    }
+    
+    .online, .offline, .me {
+      margin-right: 3px;
+      font-size: 10px;
+    }
+    
+    .online {
+      color: #86BB71;
+    }
+    
+    .offline {
+      color: #E38968;
+    }
+    
+    .me {
+      color: #94C2ED;
+    }
+    
+    .align-left {
+      text-align: left;
+    }
+    
+    .align-right {
+      text-align: right;
+    }
+    
+    .float-right {
+      float: right;
+    }
+    
+    .clearfix:after {
+      visibility: hidden;
+      display: block;
+      font-size: 0;
+      content: " ";
+      clear: both;
+      height: 0;
+    }
+    
+    
+</style>
+</head>
+<body>
+
+<div class="container clearfix" id="container">
+        
+    <div class="chat">
+       
+      <div class="chat-history" id="chat">
+        <ul id="chatlist" style="list-style: none;">
+        <!-- тут будет генерация чата. -->       
+        </ul>
+      </div> <!-- end chat-history -->
+      
+      <div class="chat-message clearfix">
+        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your message" rows="1"></textarea>
+                       
+        <button id="sendButton">Send</button>
+
+      </div> <!-- end chat-message -->
+      
+    </div> <!-- end chat -->
+    
+  </div> <!-- end container -->
+  
+</body>
+<script type="text/javascript">
+
+    var conn;
+    var msg = document.getElementById("message-to-send");
+
+    function sendMessage() {
+        if (!conn) {
+            return false;
+        }
+        if (!msg.value) {
+            return false;
+        }
+        conn.send(msg.value);
+        msg.value = "";
+        return false;
+    };
+
+    function getContentMyMessage(Time, Author, messageText){
+        return  `<div class="message-data align-right">
+                        <span class="message-data-name" >${Author}</span> <i class="fa fa-circle me"></i>
+                        <span class="message-data-time" >${Time}</span> &nbsp; &nbsp;
+                    </div>
+                    <div class="message other-message float-right">${messageText}</div>`;
+    }
+
+    function getContentOtherMessage(Time, Author, messageText){
+        return  `<div class="message-data">
+                        <span class="message-data-time" >${Time}</span> &nbsp; &nbsp;
+                        <span class="message-data-name" >${Author}</span> <i class="fa fa-circle"></i>
+                    </div>
+                    <div class="message my-message">${messageText}</div>`;
+    }
+
+    function addMessage(_messageText, _Time, _Author, _MessageIsRCV) {
+       var chatlog = document.getElementById('chatlist');
+       var chat = document.getElementById('chat');
+
+        
+        if (_MessageIsRCV == true) {
+            content = getContentOtherMessage(_Time, _Author, _messageText);  
+        }
+        else {
+            content = getContentMyMessage(_Time, _Author, _messageText); 
+        }
+        
+        var item = document.createElement("li");
+        item.className = "clearfix";
+        item.innerHTML = content;
+        chatlog.append(item);  
+        chat.scroll({ top: chat.scrollHeight, behavior: 'smooth' });
+    }
+
+    window.onload = function () {
+   
+    document.getElementById("sendButton").onclick = function () {
+        return sendMessage();
+    };
+
+    msg.onkeypress = function () {
+        var key = window.event.keyCode;
+
+        // If the user has pressed enter
+        if (key === 13) {
+            sendMessage();
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+
+    if (window["WebSocket"]) {
+        conn = new WebSocket("ws://" + document.location.host + "/chat/message");
+        conn.onclose = function (evt) {
+            addMessage("Connection closed", "now", "Error", true);
+        };
+        conn.onmessage = function (evt) {
+            var message = JSON.parse(evt.data);
+            addMessage(message.Text, message.Time, message.Author, message.rcv);  
+        };
+        conn.onerror = function(ErrorEvent) {
+            addMessage(ErrorEvent.data, "now", "Error", true);
+        };
+    } else {
+        addMessage("Your browser does not support WebSockets.", "now", "Error", true);
+    }
+};
+
+</script>
+</html>
