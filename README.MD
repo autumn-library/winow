@@ -532,7 +532,7 @@ autumn-properties.json
 { "winow":
   {
     "КаталогиСФайлами": {
-      "/tests": "./app/files"
+      "/images": "./app/files"
    }
   }
 }
