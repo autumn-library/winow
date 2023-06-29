@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1, height=device-height" />
+<title>i am not jenkins</title>
+</head>
+<body>
+
+      <div id="consoleOutput">
+        
+      </div> 
+      
+      <br>
+
+      <div>
+        <textarea name="message-to-send" id="message-to-send" placeholder ="Type your cmd" rows="1"></textarea>
+                       
+        <button id="sendButton">Send</button>
+
+      </div> 
+        
+</body>
+<script type="text/javascript">
+
+    var conn;
+    var msg = document.getElementById("message-to-send");
+
+    function sendMessage() {
+        if (!conn) {
+            return false;
+        }
+        if (!msg.value) {
+            return false;
+        }
+        conn.send(msg.value);
+        msg.value = "";
+        return false;
+    };
+
+    function getContentMyMessage(messageText){
+        return  `<div>${messageText}</div>`;
+    }
+
+    function addMessage(_messageText) {
+       var consoleOutput = document.getElementById('consoleOutput');
+
+       content = getContentMyMessage(_messageText); 
+
+        var item = document.createElement("div");
+        item.innerHTML = content;
+        consoleOutput.append(item);  
+        consoleOutput.scroll({ top: consoleOutput.scrollHeight, behavior: 'smooth' });
+    }
+
+    window.onload = function () {
+   
+    document.getElementById("sendButton").onclick = function () {
+        return sendMessage();
+    };
+
+    msg.onkeypress = function () {
+        var key = window.event.keyCode;
+
+        // If the user has pressed enter
+        if (key === 13) {
+            sendMessage();
+            return false;
+        }
+        else {
+            return true;
+        }
+    };
+
+    if (window["WebSocket"]) {
+        conn = new WebSocket("ws://" + document.location.host + "/console/run");
+        conn.onclose = function (evt) {
+            addMessage("Connection closed");
+        };
+        conn.onmessage = function (evt) {
+            var message = JSON.parse(evt.data);
+            addMessage(message.output);  
+        };
+        conn.onerror = function(ErrorEvent) {
+            addMessage(ErrorEvent.data);
+        };
+    } else {
+        addMessage("Your browser does not support WebSockets.");
+    }
+};
+
+</script>
+</html>
