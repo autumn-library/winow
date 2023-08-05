@@ -4,3 +4,4 @@ example/hwapp/upload
 *.ospx
 out/
 oscript_modules/
+tests/tmp
