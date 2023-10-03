@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head>
+<title>Отправка формы</title>
+</head>
+<body>
+<div>Отправим данные</div>
+
+<form method="post" action="/files/uploadForm" enctype="multipart/form-data">
+    <div>
+        <label for="name">Имя</label>
+        <input name="name" id=name value=noname />
+    </div>
+    <div>
+        <label for="age">Дата рождения</label>
+        <input name="age" id="age" type="date"/>
+    </div>
+    
+    <label for="file">Фотокарточка</label>
+    <input id="file" name="file" type="file" />
+   
+    <button>Upload</button>
+</form>
+
+<div>Подвал страницы</div>
+</body>
+</html>
