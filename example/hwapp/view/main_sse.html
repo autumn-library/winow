@@ -1,0 +1,83 @@
+
+<!DOCTYPE html>
+
+<script>
+let eventSource;
+let likeElem;
+let watchElem;
+let commentsElem;
+
+function start() { 
+  if (!window.EventSource) {
+    // Internet Explorer или устаревшие браузеры
+    alert("Ваш браузер не поддерживает EventSource.");
+    return;
+  }
+
+  likeElem = document.getElementById("likeCount");
+  watchElem = document.getElementById("watchCount");
+  commentsElem = document.getElementById("commentList");
+
+  eventSource = new EventSource('sse/acorndiscussion');
+
+  eventSource.addEventListener('like', function(e) {
+    likeElem.innerHTML = e.data;
+  });
+
+  eventSource.addEventListener('watch', function(e) {
+    watchElem.innerHTML = e.data;
+  });
+
+  eventSource.addEventListener('newComment', function(e) {
+    addComment(e.data);
+  });
+
+}
+
+
+function addComment(msg) {
+  commentsElem.innerHTML += msg;
+}
+
+function likeClick(){
+  let xhr = new XMLHttpRequest();
+  xhr.open('GET', 'sse/addLike');
+  xhr.send();
+}
+
+function sendComment(){
+  let formData = new FormData(document.forms.comments);
+
+  let json = JSON.stringify({
+    name: formData.get("name"),
+    Comment: formData.get("comment")
+  });
+
+  let xhr = new XMLHttpRequest();
+  xhr.open("POST", "/sse/postcomment");
+  xhr.setRequestHeader('Content-Type', 'application/json; charset=utf-8');
+  xhr.send(json);
+
+}
+
+window.onload = start;
+
+</script>
+
+<img src="images/zl1.jpg" width="150" height="150" alt="Вино и желуди">
+<div>
+  <span id="likeCount">0</span> <a href="#" style="text-decoration: none;" onclick="likeClick();return false;" title="Like"><span>&#x2764;</span></a>
+</div>
+<div>Сейчас смотрят: <span id="watchCount">0</span></div>
+<form name="comments">
+  <label for="name">Имя:</label>
+  <input id="name" name="name" value="">
+  <br>
+  <label for="comment">Комментарий:</label>
+  <div>
+    <textarea name="comment" id="comment" style="font-family:sans-serif;font-size:1.2em;">
+    </textarea>
+    <button type="button" onclick="sendComment()">Отправить</button>
+  </div>
+</form>
+<div id="commentList"></div>
