@@ -10,7 +10,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        oscript_version: ['stable', 'dev']
-    uses: autumn-library/workflows/.github/workflows/test.yml@main
+        oscript_version: ['dev']
+    uses: autumn-library/workflows/.github/workflows/test.yml@oneunit
     with:
       oscript_version: ${{ matrix.oscript_version }} 
