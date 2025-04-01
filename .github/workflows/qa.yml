@@ -10,7 +10,7 @@ jobs:
     uses: autumn-library/workflows/.github/workflows/sonar.yml@oneunit
     with:
       github_repository: autumn-library/autumn
-      coveralls: true
+      coveralls: false
       oscript_version: 'dev'
     secrets:
       SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
