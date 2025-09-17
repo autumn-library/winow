@@ -406,45 +406,45 @@
 
 КонецПроцедуры
 
-// &Тест
-// Процедура Должен_ПроверитьРукопожатиеВебСокета() Экспорт
+// &Тест // Отключил
+Процедура Должен_ПроверитьРукопожатиеВебСокета() Экспорт
 
-// 	// Дано
-// 	Клиент = Новый TCPСоединение("localhost", 3333);
+	// Дано
+	Клиент = Новый TCPСоединение("localhost", 3333);
 
-// 	ТекстЗапроса = "GET /socket/ws HTTP/1.1
-// 					|Host: localhost:3333
-// 					|User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:107.0) Gecko/20100101 Firefox/107.0
-// 					|Accept: */*
-// 					|Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
-// 					|Accept-Encoding: gzip, deflate, br
-// 					|Sec-WebSocket-Version: 13
-// 					|Origin: null
-// 					|Sec-WebSocket-Extensions: permessage-deflate
-// 					|Sec-WebSocket-Key: 8Nm7+HLTwID0n9ABpH5QGA==
-// 					|DNT: 1
-// 					|Connection: keep-alive, Upgrade
-// 					|Sec-Fetch-Dest: websocket
-// 					|Sec-Fetch-Mode: websocket
-// 					|Sec-Fetch-Site: cross-site
-// 					|Pragma: no-cache
-// 					|Cache-Control: no-cache
-// 					|Upgrade: websocket";
+	ТекстЗапроса = "GET /socket/ws HTTP/1.1
+					|Host: localhost:3333
+					|User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:107.0) Gecko/20100101 Firefox/107.0
+					|Accept: */*
+					|Accept-Language: ru-RU,ru;q=0.8,en-US;q=0.5,en;q=0.3
+					|Accept-Encoding: gzip, deflate, br
+					|Sec-WebSocket-Version: 13
+					|Origin: null
+					|Sec-WebSocket-Extensions: permessage-deflate
+					|Sec-WebSocket-Key: 8Nm7+HLTwID0n9ABpH5QGA==
+					|DNT: 1
+					|Connection: keep-alive, Upgrade
+					|Sec-Fetch-Dest: websocket
+					|Sec-Fetch-Mode: websocket
+					|Sec-Fetch-Site: cross-site
+					|Pragma: no-cache
+					|Cache-Control: no-cache
+					|Upgrade: websocket";
 
-// 	// Когда
-// 	Клиент.ОтправитьСтроку("/socket/ws");
-// 	Ответ = Клиент.ПрочитатьСтроку();
-// 	Приостановить(100);
+	// Когда
+	Клиент.ОтправитьСтроку("/socket/ws");
+	Ответ = Клиент.ПрочитатьСтроку();
+	Приостановить(100);
 
-// 	// Тогда
+	// Тогда
 
-// 	Ожидаем.Что(Клиент.Активно, "Соединение активно").Равно(Истина);
-// 	Ожидаем.Что(Ответ, "ответ содержит хендшейк").Содержит("Sec-WebSocket-Accept: hgGtYQoki4w7EXHvdkxAVu61+PI=");
-// 	Ожидаем.Что(Ответ, "ответ содержит код 101").Содержит("HTTP/1.1 101");
+	Ожидаем.Что(Клиент.Активно, "Соединение активно").Равно(Истина);
+	Ожидаем.Что(Ответ, "ответ содержит хендшейк").Содержит("Sec-WebSocket-Accept: hgGtYQoki4w7EXHvdkxAVu61+PI=");
+	Ожидаем.Что(Ответ, "ответ содержит код 101").Содержит("HTTP/1.1 101");
 	
-// КонецПроцедуры
+КонецПроцедуры
 
-// &Тест
+&Тест
 Процедура Должен_ПроверитьВебСокета() Экспорт
 
 	// Дано
@@ -738,6 +738,3 @@
 	Ожидаем.Что(ТекстТело).Равно(ТекстИзФайла);
 
 КонецПроцедуры
-
-// ПередЗапускомТеста();
-// Должен_ПроверитьРукопожатиеВебСокета();
