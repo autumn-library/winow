@@ -12,6 +12,7 @@ jobs:
       matrix:
         include:
           - oscript_version: ['default', 'lts-dev']
+            test_engine: ['1testrunner']
           - oscript_version: 'dev'
             test_engine: 'oneunit'
     uses: autumn-library/workflows/.github/workflows/test.yml@oneunit
