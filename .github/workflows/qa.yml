@@ -7,7 +7,7 @@ on:
 
 jobs:
   sonar:
-    uses: autumn-library/workflows/.github/workflows/sonar.yml@oneunit
+    uses: autumn-library/workflows/.github/workflows/sonar.yml@main
     with:
       sonarqube: true
       github_repository: autumn-library/winow

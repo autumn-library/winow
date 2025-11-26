@@ -15,7 +15,7 @@ jobs:
         include:
           - oscript_version: 'dev'
             test_engine: 'oneunit'
-    uses: autumn-library/workflows/.github/workflows/test.yml@oneunit
+    uses: autumn-library/workflows/.github/workflows/test.yml@main
     with:
       oscript_version: ${{ matrix.oscript_version }}
       test_engine: ${{ matrix.test_engine }}
