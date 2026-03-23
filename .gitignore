@@ -5,3 +5,5 @@ example/hwapp/upload
 out/
 oscript_modules/
 tests/tmp
+container/
+.env
