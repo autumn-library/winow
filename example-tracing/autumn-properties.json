@@ -13,7 +13,7 @@
         },
         "exporter": {
             "otlp": {
-                "protocol": "http"
+                "protocol": "http/protobuf"
             }
         },
         "metric": {
