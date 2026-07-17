@@ -8,7 +8,7 @@
         "КаталогиСФайлами": {
             "/images": "./hwapp/files"
         },
-        "OpenApi": {
+        "openapi": {
             "Включено": true,
             "Заголовок": "winow example API",
             "Описание": "Пример автогенерации спецификации OpenAPI в winow"
