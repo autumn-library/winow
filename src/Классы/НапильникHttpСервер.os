@@ -6,6 +6,7 @@
 // и устанавливает код ответа после обработки.
 
 #Использовать opentelemetry
+#Использовать autumn-opentelemetry
 #Использовать annotations
 #Использовать decorator
 
