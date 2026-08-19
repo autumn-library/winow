@@ -1,0 +1,46 @@
+{
+    "winow": {
+        "Порт": 3334,
+        "ИмяХоста": "localhost",
+        "АвтоСтарт": true,
+        "ИспользоватьПрикладнойСервер": true,
+        "КаталогСПриложениями": "./app"
+    },
+    "otel": {
+        "enabled": true,
+        "service": {
+            "name": "сервис-обработки"
+        },
+        "exporter": {
+            "otlp": {
+                "protocol": "http/protobuf"
+            }
+        },
+        "metric": {
+            "export": {
+                "interval": "10000"
+            }
+        }
+    },
+    "logos": {
+        "logger": {
+            "rootLogger": {
+                "level": "DEBUG",
+                "appenders": [
+                    "otel",
+                    "console"
+                ]
+            }
+        },
+        "appender": {
+            "otel": {
+                "type": "ОтелАппендерLogos",
+                "level": "DEBUG"
+            },
+            "console": {
+                "type": "ВыводЛогаВКонсоль",
+                "level": "DEBUG"
+            }
+        }
+    }
+}

@@ -1,7 +1,10 @@
-.vscode
+.vscode/*
+!.vscode/settings.json
 .DS_Store
 example/hwapp/upload
 *.ospx
 out/
 oscript_modules/
 tests/tmp
+container/
+.env
