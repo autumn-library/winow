@@ -5,9 +5,7 @@
 // создает SERVER спан с HTTP semantic conventions
 // и устанавливает код ответа после обработки.
 
-#Использовать opentelemetry
 #Использовать autumn-opentelemetry
-#Использовать annotations
 #Использовать decorator
 
 // ТрассировкаHttpЗапросов - ведёт серверный спан вокруг обработки запроса.
