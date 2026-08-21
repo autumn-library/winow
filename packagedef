@@ -72,7 +72,7 @@
 
 
 Описание.Имя("winow")
-        .Версия("0.12.0")
+        .Версия("0.12.1")
         .Автор("Никита Иванченко")
         .АдресАвтора("https://github.com/Nivanchenko")
         .АдресРепозитория("https://github.com/autumn-library/winow")
