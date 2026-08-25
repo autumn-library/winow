@@ -1,0 +1,9 @@
+{
+    "diagnostics": {
+        "parameters": {
+            "Typo": {
+                "userWordsToIgnore": "Сериализуемое,Несериализуемое,сезд"
+            }
+        }
+    }
+}
