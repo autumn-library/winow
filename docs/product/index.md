@@ -1456,7 +1456,7 @@ winow умеет автоматически строить спецификац�
 * `http://localhost:3333/v3/api-docs` — сама спецификация в формате JSON.
 * `http://localhost:3333/v3/api-docs.yaml` — она же в формате YAML.
 
-Адреса по умолчанию совпадают с [springdoc-openapi](https://springdoc.org/) 2.x, чтобы инструменты, настроенные на Spring-приложения, работали с winow без переделки. Адрес YAML отдельно не настраивается: он всегда получается из `ПутьСпецификации` добавлением суффикса `.yaml`.
+Адреса по умолчанию совпадают с [springdoc-openapi](https://springdoc.org/) 2.x. Адрес YAML отдельно не настраивается: он всегда получается из `ПутьСпецификации` добавлением суффикса `.yaml`.
 
 ![swagger-ui](https://raw.githubusercontent.com/autumn-library/winow/master/docs/static/hw1.png)
 
