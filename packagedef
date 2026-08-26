@@ -91,6 +91,7 @@
         .ЗависитОт("autumn-validate", "2.1.0")
         .ЗависитОт("semaphore", "1.1.1")
         .ЗависитОт("fs", "1.2.0")
+        .ЗависитОт("collectionos", "0.8.3")
         .ЗависитОт("oscript-yaml", "0.3.0")
         .ЗависитОт("opentelemetry", "1.0.1")
         .ЗависитОт("autumn-opentelemetry", "1.0.2")
