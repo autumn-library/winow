@@ -56,6 +56,7 @@
 	ОписанияТиповРасширений.Вставить("zip","application/x-compressed");
 	ОписанияТиповРасширений.Вставить("rar","application/x-compressed");
 	ОписанияТиповРасширений.Вставить("json","application/json");
+	ОписанияТиповРасширений.Вставить("yaml","application/yaml; charset=utf-8");
 	ОписанияТиповРасширений.Вставить("txt","text/plain; charset=utf-8");
 	ОписанияТиповРасширений.Вставить("swf","application/x-shockwave-flash");
 	ОписанияТиповРасширений.Вставить("svg","image/svg+xml");
