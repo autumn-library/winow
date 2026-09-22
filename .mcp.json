@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "bsl-language-server": {
+            "type": "http",
+            "url": "http://localhost:8235/mcp"
+        },
+        "oneunit": {
+            "type": "stdio",
+            "command": "./oscript_modules/bin/oneunit",
+            "args": ["mcp"]
+        }
+    }
+}

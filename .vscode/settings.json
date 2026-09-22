@@ -1,0 +1,4 @@
+{
+    "language-1c-bsl.languageServerMcpEnabled": true,
+    "language-1c-bsl.languageServerMcpPort": "8235"
+}

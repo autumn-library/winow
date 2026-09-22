@@ -1,11 +1,59 @@
-﻿{ "winow":
-  {
-      "Порт": 3333,
-      "ИмяХоста": "localhost",
-      "АвтоСтарт": true,
-      "КаталогСПриложениями": "./hwapp",
-      "КаталогиСФайлами": {
-         "/images": "./hwapp/files"
-      }
-  }
+﻿{
+    "winow": {
+        "Порт": 3333,
+        "ИмяХоста": "localhost",
+        "АвтоСтарт": true,
+        "ИспользоватьПрикладнойСервер": true,
+        "КаталогСПриложениями": "./hwapp",
+        "КаталогиСФайлами": {
+            "/images": "./hwapp/files"
+        },
+        "openapi": {
+            "Включено": true,
+            "Заголовок": "winow example API",
+            "Описание": "Пример автогенерации спецификации OpenAPI в winow",
+            "Сводка": "Каталог товаров и демонстрация возможностей winow",
+            "Лицензия": {
+                "Имя": "MIT",
+                "Идентификатор": "MIT"
+            }
+        }
+    },
+    "otel": {
+        "enabled": true,
+        "service": {
+            "name": "мой-сервис"
+        },
+        "exporter": {
+            "otlp": {
+                "protocol": "grpc"
+            }
+        },
+        "metric": {
+            "export": {
+                "interval": "10000"
+            }
+        }
+    },
+    "logos": {
+        "logger": {
+            "rootLogger": {
+                "level": "DEBUG",
+                "appenders": [
+                    "otel",
+                    "console"
+                ]
+            }
+        },
+        "appender": {
+            "otel": {
+                "type": "ОтелАппендерLogos",
+                "level": "DEBUG"
+            },
+            "console": {
+                "type": "ВыводЛогаВКонсоль",
+                "level": "DEBUG"
+            }
+        }
+    }
 }
