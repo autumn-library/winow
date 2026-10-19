@@ -16,3 +16,12 @@ jobs:
       oscript_version: ${{ matrix.oscript_version }}
       test_engine: oneunit
       test_dir_paths: tests
+
+  # Сквозные тесты поднимают grafana/otel-lgtm через testcontainers,
+  # поэтому идут только там, где у раннера есть Docker.
+  e2e:
+    uses: autumn-library/workflows/.github/workflows/test.yml@main
+    with:
+      test_engine: oneunit
+      test_dir_paths: tests/e2e
+      os_versions: '["ubuntu-latest"]'
